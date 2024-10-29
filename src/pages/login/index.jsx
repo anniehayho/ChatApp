@@ -1,22 +1,88 @@
-import { Link } from "react-router-dom";
-import welcome from "../../assets/images/welcome.png";
+import Background from '@/assets/login2.png';
+import Victory from '@/assets/victory.svg';
+import {Tabs, TabsContent, TabsList, TabsTrigger} from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 const Login = () => {
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
+	const [confirmPassword, setConfirmPassword] = useState("");
+	const handleLogin = async () => {
+
+	}
+
+	const handleSignup = async () => {
+		
+	}
+
+
+
 	return (
-		<div className="min-h-screen w-full flex items-center justify-center p-4">
-			<div className="w-full max-w-6xl bg-white border-2 border-white shadow-2xl rounded-3xl overflow-hidden flex flex-col xl:flex-row">
-				<div className="flex-1 flex flex-col items-center justify-center p-8">
-					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8">Welcome</h1>
-					<form className="w-full max-w-md">
-						<input type="text" placeholder="Username" className="w-full p-3 mb-4 border rounded" />
-						<input type="password" placeholder="Password" className="w-full p-3 mb-4 border rounded" />
-						<button className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">Login</button>
-						<p className="text-sm text-gray-500 mt-4">Don't have an account? <Link to="/register" className="text-blue-500 hover:underline">Register</Link></p>
-						<p className="text-sm text-gray-500 mt-2">Forgot your password? <Link to="/forgot-password" className="text-blue-500 hover:underline">Reset Password</Link></p>
-					</form>
+		<div className="h-[100vh] w-[100vw] flex justify-center items-center">
+			<div className="h-[80vh] w-[80vw] bg-white border-2 border-white text-opacity-90 shadow-2xl md:w-[90vw] lg:w-[70vw] xl:w-[60vw] rounded-3xl grid xl:grid-cols-2">
+				<div className="flex flex-col gap-10 items-center justify-center">
+					<div className="flex items-center flex-col">
+						<div className="flex items-center justify-center">
+							<h1 className="text-5xl font-bold md:text-6xl">Welcome</h1>
+							<img src={Victory} alt="Victor Emoji" className="h-[100px]" />
+						</div>
+						<p className="font-medium text-center">Fill in the details to get started with the best Chat App!</p>
+					</div>
+					<div className="flex items-center justify-center w-full">
+						<Tabs className="w-3/4">
+							<TabsList className="bg-transparent rounded-none w-full">
+								<TabsTrigger value="login" className="data-[state=active]:bg-transparent text-black-opacity-90 border-b-2 rounded-none w-full data-[state=active]:border-b-purple-500 p-3 transition-all duration-300">Login</TabsTrigger>
+
+								<TabsTrigger value="signup" className="data-[state=active]:bg-transparent text-black-opacity-90 border-b-2 rounded-none w-full data-[state=active]:border-b-purple-500 p-3 transition-all duration-300">Sign Up</TabsTrigger>
+							</TabsList>
+							<TabsContent className="flex flex-col gap-5 mt-10" value="login">
+								<Input 
+									placeholder="Email" 
+									type="email" 
+									className="rounded-full p-6" 
+									value={email} 
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<Input 
+									placeholder="Password" 
+									type="password" 
+									className="rounded-full p-6" 
+									value={password} 
+									onChange={(e) => setPassword(e.target.value)}
+								/>
+								<Button className="rounded-full p-6" onClock={handleLogin}>Login</Button>
+							</TabsContent>
+							<TabsContent className="flex flex-col gap-5" value="signup">
+							<Input 
+									placeholder="Email" 
+									type="email" 
+									className="rounded-full p-6" 
+									value={email} 
+									onChange={(e) => setEmail(e.target.value)}
+								/>
+								<Input 
+									placeholder="Password" 
+									type="password" 
+									className="rounded-full p-6" 
+									value={password} 
+									onChange={(e) => setPassword(e.target.value)}
+								/>
+								<Input 
+									placeholder="Confirm Password" 
+									type="password" 
+									className="rounded-full p-6" 
+									value={confirmPassword} 
+									onChange={(e) => setConfirmPassword(e.target.value)}
+								/>
+								<Button className="rounded-full p-6" onClock={handleSignup}>Sign Up</Button>
+							</TabsContent>
+						</Tabs>
+					</div>
 				</div>
-				<div className="flex-1 p-8 flex items-center justify-center">
-					<img src={welcome} alt="Welcome" className="max-w-full max-h-full object-contain"/>
+				<div className="hidden xl:flex items-center justify-center">
+					<img src={Background} alt="Login Background" className="h-[700px]" />
 				</div>
 			</div>
 		</div>
